@@ -34,7 +34,7 @@ func TestGetAllPossibilities(t *testing.T) {
 
 	for _, test := range tests {
 		result := getAllPossibilities(test.target, test.word_bank)
-		if !util.Compare2DSlice(result, test.expectedResult) {
+		if !util.Compare2DSliceString(result, test.expectedResult) {
 			t.Errorf("Expected %v, got %v", test.expectedResult, result)
 		}
 	}
