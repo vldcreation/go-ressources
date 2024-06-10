@@ -83,3 +83,13 @@ func Compare2DSliceInt64(a, b [][]int64) bool {
 
 	return true
 }
+
+func CheckStringInSlice(str string, arr []string) bool {
+	for _, s := range arr {
+		if str == s {
+			return true
+		}
+	}
+
+	return false
+}
