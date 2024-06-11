@@ -13,9 +13,19 @@ func TestLongestPalindrome(t *testing.T) {
 		expected []string
 	}{
 		{
+			name:     "Test 1",
+			str:      "babad",
+			expected: []string{"bab", "aba"},
+		},
+		{
+			name:     "Test 2",
+			str:      "cbbd",
+			expected: []string{"bb"},
+		},
+		{
 			name:     "Test 3",
 			str:      "ccc",
-			expected: []string{"bb"},
+			expected: []string{"ccc"},
 		},
 	}
 

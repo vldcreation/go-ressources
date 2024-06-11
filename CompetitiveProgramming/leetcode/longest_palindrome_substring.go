@@ -12,7 +12,7 @@ func isPalindrome(s string) bool {
 }
 
 func best(s1, s2 string) string {
-	if s1 > s2 {
+	if len(s1) > len(s2) {
 		return s1
 	}
 
@@ -29,30 +29,20 @@ func longestPalindrome(s string) string {
 		return string(s[0])
 	}
 
-	curStr := string(s[0])
-	startIdx := 1
-	for i := 1; i <= len(s); i++ {
-		if !isPalindrome(curStr) && (len(ans) >= len(s)-i) {
-			return ans
-		}
-
+	curStr := ""
+	startIdx := 0
+	for i := 0; i < len(s); i++ {
 		curStr = curStr + string(s[i])
 		if isPalindrome(curStr) {
 			ans = best(ans, curStr)
-
+		} else {
 			// reset
-			curStr = string(s[startIdx])
-			if startIdx <= len(s)-1 {
-				startIdx = startIdx + 1
-			}
-			i = startIdx
-		}
-
-		if i == len(s)-1 {
-			curStr = string(s[startIdx])
-			i = startIdx
-			if startIdx <= len(s)-1 {
-				startIdx = startIdx + 1
+			if i == len(s)-1 {
+				if startIdx <= len(s)-1 {
+					startIdx = startIdx + 1
+					i = startIdx
+				}
+				curStr = string(s[startIdx])
 			}
 		}
 	}
