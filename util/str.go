@@ -93,3 +93,13 @@ func CheckStringInSlice(str string, arr []string) bool {
 
 	return false
 }
+
+func CheckIntInSlice(num int, arr []int) bool {
+	for _, v := range arr {
+		if num == v {
+			return true
+		}
+	}
+
+	return false
+}
