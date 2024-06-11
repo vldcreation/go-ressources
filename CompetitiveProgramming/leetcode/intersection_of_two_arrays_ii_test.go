@@ -34,7 +34,23 @@ func TestIntersect(t *testing.T) {
 			nums1: []int{0, 2, 7, 7, 9},
 			nums2: []int{0, 8, 4},
 			expected: [][]int{
-				{4, 9},
+				{0},
+			},
+		},
+		{
+			name:  "TC4",
+			nums1: []int{2, 1},
+			nums2: []int{1, 1},
+			expected: [][]int{
+				{1},
+			},
+		},
+		{
+			name:  "TC5",
+			nums1: []int{2, 1},
+			nums2: []int{1, 2},
+			expected: [][]int{
+				{1, 2},
 			},
 		},
 	}
