@@ -23,3 +23,30 @@ func NewMap(data []byte) (*swiss.Map[string, interface{}], error) {
 
 	return m, nil
 }
+
+// MarshalJSON marshals the map to JSON.
+func Encode(m *swiss.Map[string, interface{}], finish int) ([]byte, error) {
+	mp := map[string]interface{}{}
+	if m.Count() == 0 {
+		return json_iter.Marshal(mp)
+	}
+
+	if finish <= 0 {
+		finish = m.Count()
+	}
+
+	i := 1
+	m.Iter(func(k string, v interface{}) bool {
+		if i <= m.Count() {
+			if i <= finish {
+				mp[k] = v
+				i++
+				return false
+			}
+		}
+
+		return true
+	})
+
+	return json_iter.Marshal(mp)
+}
