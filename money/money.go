@@ -220,15 +220,11 @@ func spellOutThreeDigits(n int64) string {
 
 func defaultSpellings() map[language.Tag]internalSpellings {
 	bakedSpellings := make(map[language.Tag]internalSpellings, 0)
-	bakedSpellings[language.Indonesian] = internalSpellings{
-		V1: wrappedSpelling(V1, func(i int64) string {
-			s := strings.Join(strings.Fields(SpellOutIndonesianV1(i)), " ")
-			return s + " Rupiah"
-		}),
-	}
-	bakedSpellings[language.English] = internalSpellings{
-		V1: wrappedSpelling(V1, SpellOutEnglishV1),
-	}
+	bakedSpellings[language.Indonesian] = wrappendSpellingMap(V1, func(i int64) string {
+		s := strings.Join(strings.Fields(SpellOutIndonesianV1(i)), " ")
+		return s + " Rupiah"
+	})
+	bakedSpellings[language.English] = wrappendSpellingMap(V1, SpellOutEnglishV1)
 
 	return bakedSpellings
 }
