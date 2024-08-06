@@ -1,16 +1,23 @@
 package json_iter
 
 import (
+	"fmt"
 	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
-var pathTestData = "test_data.json"
+var pathTestData = "data"
+
+func init() {
+	if _, err := os.Stat(pathTestData); os.IsNotExist(err) {
+		os.Mkdir(pathTestData, 0755)
+	}
+}
 
 func TestJsonIterUnMarshall(t *testing.T) {
-	bt, err := os.ReadFile(pathTestData)
+	bt, err := os.ReadFile(fmt.Sprintf("%s/test_data.json", pathTestData))
 	assert.NoError(t, err)
 	assert.NotNil(t, bt)
 
@@ -41,7 +48,7 @@ type Field struct {
 }
 
 func TestJsonIterGet(t *testing.T) {
-	bt, err := os.ReadFile(pathTestData)
+	bt, err := os.ReadFile(fmt.Sprintf("%s/test_data.json", pathTestData))
 	assert.NoError(t, err)
 	assert.NotNil(t, bt)
 
@@ -63,4 +70,9 @@ func TestJsonIterGet(t *testing.T) {
 	}
 
 	assert.Equal(t, 18, len(mergedFields))
+}
+
+func TestJsonIterSetOrdered(t *testing.T) {
+	err := SetOrdered(fmt.Sprintf("%s/env.json", pathTestData), fmt.Sprintf("%s/ordered_env.json", pathTestData))
+	assert.NoError(t, err)
 }
