@@ -31,7 +31,7 @@ func wrappedSpelling(v Version, f spellingFunc) internalSpellingsWrapper {
 	}
 }
 
-func wrappendSpellingMap(v Version, f spellingFunc) internalSpellings {
+func wrappedSpellingMap(v Version, f spellingFunc) internalSpellings {
 	return internalSpellings{
 		v: wrappedSpelling(v, f),
 	}
@@ -68,7 +68,7 @@ func (m *Money) RegisterSpellings(v Version, lang language.Tag, fn spellingFunc)
 		}
 	}
 
-	m.spellings[lang] = wrappendSpellingMap(v, fn)
+	m.spellings[lang] = wrappedSpellingMap(v, fn)
 
 	return nil
 }
@@ -220,11 +220,11 @@ func spellOutThreeDigits(n int64) string {
 
 func defaultSpellings() map[language.Tag]internalSpellings {
 	bakedSpellings := make(map[language.Tag]internalSpellings, 0)
-	bakedSpellings[language.Indonesian] = wrappendSpellingMap(V1, func(i int64) string {
+	bakedSpellings[language.Indonesian] = wrappedSpellingMap(V1, func(i int64) string {
 		s := strings.Join(strings.Fields(SpellOutIndonesianV1(i)), " ")
 		return s + " Rupiah"
 	})
-	bakedSpellings[language.English] = wrappendSpellingMap(V1, SpellOutEnglishV1)
+	bakedSpellings[language.English] = wrappedSpellingMap(V1, SpellOutEnglishV1)
 
 	return bakedSpellings
 }
