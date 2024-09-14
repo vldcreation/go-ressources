@@ -85,6 +85,14 @@ func (m *Money) Format(lang language.Tag) string {
 	return formatMoney(m.amount, m.currency, lang)
 }
 
+func (m *Money) SetMoney(amount decimal.Decimal) {
+	m.amount = amount
+}
+
+func (m *Money) SetMoneyFromInt(amount int64) {
+	m.amount = decimal.NewFromInt(amount)
+}
+
 func (m *Money) Add(money *Money) *Money {
 	if m.currency != money.currency {
 		return nil
