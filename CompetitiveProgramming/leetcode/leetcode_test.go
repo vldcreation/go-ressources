@@ -28,3 +28,48 @@ func TestAddTwoNumbers(t *testing.T) {
 		}
 	}
 }
+
+func TestLengthOfLongestSubstring(t *testing.T) {
+	tests := []struct {
+		name     string
+		test     string
+		expected int
+	}{
+		{
+			name:     "test 1",
+			test:     "abcabcbb",
+			expected: 3,
+		},
+		{
+			name:     "test 2",
+			test:     "pwwkew",
+			expected: 3,
+		},
+		{
+			name:     "test 3",
+			test:     "bbbbb",
+			expected: 1,
+		},
+		{
+			name:     "test 4",
+			test:     "au",
+			expected: 2,
+		},
+		{
+			name:     "test 5",
+			test:     "dvdf",
+			expected: 3,
+		},
+		{
+			name:     "test 6",
+			test:     "nfpdmpi",
+			expected: 5,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := leetcode.LengthOfLongestSubstring(tt.test); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
