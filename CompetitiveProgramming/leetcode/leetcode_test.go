@@ -73,3 +73,43 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 		}
 	}
 }
+
+func TestReverseInt(t *testing.T) {
+	tests := []struct {
+		name     string
+		x        int
+		expected int
+	}{
+		{
+			name:     "Test 1",
+			x:        121,
+			expected: 121,
+		},
+		{
+			name:     "Test 2",
+			x:        -123,
+			expected: -321,
+		},
+		{
+			name:     "Test 3",
+			x:        120,
+			expected: 21,
+		},
+		{
+			name:     "Test 4",
+			x:        1234123412341234123,
+			expected: 0,
+		},
+		{
+			name:     "Test 5",
+			x:        1534236469,
+			expected: 0,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := leetcode.ReverseInt(tt.x); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
