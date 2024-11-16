@@ -1,4 +1,4 @@
-package leetcode
+package medium
 
 func check(nums1, nums2 []int) ([]int, []int) {
 	if len(nums1) <= len(nums2) {
@@ -8,7 +8,7 @@ func check(nums1, nums2 []int) ([]int, []int) {
 	return nums2, nums1
 }
 
-func intersect(nums1 []int, nums2 []int) []int {
+func Intersect(nums1 []int, nums2 []int) []int {
 	ans := make([]int, 0)
 	fIdx := 1
 	nums1, nums2 = check(nums1, nums2)

@@ -1,4 +1,4 @@
-package leetcode
+package medium
 
 func isPalindrome(s string) bool {
 
@@ -19,7 +19,7 @@ func best(s1, s2 string) string {
 	return s2
 }
 
-func longestPalindrome(s string) string {
+func LongestPalindrome(s string) string {
 	var ans string
 
 	if len(s) < 3 {

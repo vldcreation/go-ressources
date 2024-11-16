@@ -2,7 +2,7 @@
 // @Author: Vicktor Desrony
 // @filename: add_two_numbers.go
 */
-package leetcode
+package medium
 
 type ListNode struct {
 	Val  int

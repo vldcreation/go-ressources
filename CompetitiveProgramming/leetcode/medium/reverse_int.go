@@ -1,4 +1,4 @@
-package leetcode
+package medium
 
 func ReverseInt(x int) int {
 	ans := 0
