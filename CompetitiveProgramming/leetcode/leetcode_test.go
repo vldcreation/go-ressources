@@ -113,3 +113,61 @@ func TestReverseInt(t *testing.T) {
 		}
 	}
 }
+
+func TestZigzagConversion(t *testing.T) {
+	tests := []struct {
+		name     string
+		s        string
+		numRows  int
+		expected string
+	}{
+		{
+			name:     "Test 1",
+			s:        "PAYPALISHIRING",
+			numRows:  2,
+			expected: "PYAIHRNAPLSIIG",
+		},
+		{
+			name:     "Test 2",
+			s:        "PA",
+			numRows:  2,
+			expected: "PA",
+		},
+		{
+			name:     "Test 3",
+			s:        "PAYPALISHIRING",
+			numRows:  3,
+			expected: "PAHNAPLSIIGYIR",
+		},
+		{
+			name:     "Test 4",
+			s:        "PAYPALISHIRING",
+			numRows:  4,
+			expected: "PINALSIGYAHRPI",
+		},
+		{
+			name:     "Test 5",
+			s:        "ABC",
+			numRows:  2,
+			expected: "ACB",
+		},
+		{
+			name:     "Test 5",
+			s:        "ABC",
+			numRows:  3,
+			expected: "ABC",
+		},
+		{
+			name:     "Test 5",
+			s:        "ABCDE",
+			numRows:  4,
+			expected: "ABCED",
+		},
+	}
+
+	for _, tt := range tests {
+		if got := leetcode.ZigzagConversion__BEST(tt.s, tt.numRows); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
