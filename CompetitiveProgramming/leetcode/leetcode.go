@@ -1,5 +1,11 @@
 package leetcode
 
+import (
+	"log"
+
+	"github.com/vldcration/go-ressources/util"
+)
+
 /*
 // @Author: Vicktor Desrony
 // @filename: leetcode.go
@@ -26,8 +32,29 @@ type Solution struct {
 
 type Opt func(*Leetcode)
 
-func NewLeetcode(...Opt) *Leetcode {
-	return &Leetcode{}
+func NewLeetcode(opt ...Opt) *Leetcode {
+	l := &Leetcode{}
+	for _, o := range opt {
+		o(l)
+	}
+
+	return l
+}
+
+func WithProblems(problems []Problem) Opt {
+	return func(l *Leetcode) {
+		l.Problems = problems
+	}
+}
+
+func MustLoadProblems() Opt {
+	return func(l *Leetcode) {
+		var pathToProblems = util.RootPath() + "/data/solution_bank.json"
+		if err := util.LoadJSON(pathToProblems, l); err != nil {
+			log.Printf("Error load problems: %v", err)
+			panic(err)
+		}
+	}
 }
 
 func (l *Leetcode) AddProblem(p Problem) {
