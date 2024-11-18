@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"slices"
 
@@ -60,7 +61,8 @@ func NewCMD() *cobra.Command {
 func addSolution(cmd *cobra.Command, args []string) {
 	// args: category, solution_slug
 	if len(args) < 2 {
-		panic("Not enough arguments")
+		log.Fatal("Invalid number of arguments")
+		return
 	}
 
 	// register the flag --replace
@@ -78,32 +80,36 @@ func addSolution(cmd *cobra.Command, args []string) {
 	solutionSlug := args[1]
 
 	if solutionSlug == "" {
-		panic("Invalid solution slug, it cannot be empty")
+		log.Fatal("Invalid solution slug, it cannot be empty")
+		return
 	}
 
 	// Create the solution file
 	if !slices.Contains(MapSolutionLevel, category) {
-		panic("Invalid category")
+		log.Fatal("Invalid category")
+		return
 	}
 
 	// lookup the existing solution filename based on the solution slug
 	// if it exists, return an error
 	if !mustReplace {
 		if _, err := os.Stat(RootPath + "/" + category + "/" + solutionSlug + ".go"); err == nil {
-			panic("Solution already exists")
+			log.Fatal("The solution file already exists")
+			return
 		}
 	}
 
 	// open base stub file
 	fileStub, err := os.Open(RootPath + "/" + category + "/" + "/base.stub")
 	if err != nil {
-		panic(err)
+		log.Fatalf("Error opening file solution stub: %v\n", err)
+		return
 	}
 
 	defer func() {
 		if err := fileStub.Close(); err != nil {
-			fmt.Printf("Error closing file: %v\n", err)
-			panic(err)
+			log.Fatalf("Error closing file solution stub: %v\n", err)
+			return
 		}
 	}()
 
@@ -113,13 +119,14 @@ func addSolution(cmd *cobra.Command, args []string) {
 	// open the solution file
 	solutionFile, err := os.Create(RootPath + "/" + category + "/" + solutionSlug + ".go")
 	if err != nil {
-		panic(err)
+		log.Fatalf("Error creating file solution: %v\n", err)
+		return
 	}
 
 	defer func() {
 		if err := solutionFile.Close(); err != nil {
-			fmt.Printf("Error closing file: %v\n", err)
-			panic(err)
+			fmt.Printf("Error closing file solution: %v\n", err)
+			return
 		}
 	}()
 
@@ -129,7 +136,8 @@ func addSolution(cmd *cobra.Command, args []string) {
 		// read a chunk
 		n, err := fileStub.Read(fileStubBytes)
 		if err != nil && err != io.EOF {
-			panic(err)
+			log.Fatalf("Error reading file solution stub: %v\n", err)
+			return
 		}
 		if n == 0 {
 			break
@@ -137,7 +145,8 @@ func addSolution(cmd *cobra.Command, args []string) {
 
 		// write a chunk
 		if _, err := solutionFile.Write(fileStubBytes[:n]); err != nil {
-			panic(err)
+			log.Fatalf("Error writing file solution: %v\n", err)
+			return
 		}
 	}
 
