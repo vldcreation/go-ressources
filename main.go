@@ -8,9 +8,9 @@ import (
 func main() {
 	var (
 		rootCmd = &cobra.Command{
-			Use:   "go-ressources",
-			Short: "go-ressources is a CLI tool to manage ressources",
-			Long:  "go-ressources is a CLI tool to manage ressources",
+			Use:   "app",
+			Short: "app is a CLI tool to manage ressources",
+			Long:  "app is a CLI tool to manage ressources",
 		}
 	)
 

@@ -11,19 +11,22 @@ type Leetcode struct {
 }
 
 type Problem struct {
-	Name       string   `json:"name"`
-	Slug       string   `json:"slug"`
-	Path       string   `json:"Path"`
-	Difficulty string   `json:"difficulty"`
-	Solution   Solution `json:"solution"`
+	ID         int        `json:"id"` // Leetcode ID or Problem ID
+	Tittle     string     `json:"tittle"`
+	Difficulty string     `json:"difficulty"`
+	Slug       string     `json:"slug"`
+	Url        string     `json:"url" comment:"URL to the problem"`
+	Solutions  []Solution `json:"solutions"`
 }
 
 type Solution struct {
 	Language string `json:"language"`
-	Path     string `json:"path"`
+	Url      string `json:"url"`
 }
 
-func NewLeetcode() *Leetcode {
+type Opt func(*Leetcode)
+
+func NewLeetcode(...Opt) *Leetcode {
 	return &Leetcode{}
 }
 

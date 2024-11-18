@@ -3,7 +3,7 @@ package leetcode_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/medium"
+	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/problem/medium"
 	"github.com/vldcration/go-ressources/util"
 )
 

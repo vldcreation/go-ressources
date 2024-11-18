@@ -55,11 +55,11 @@ func NewCMD() *cobra.Command {
 
 /*
 - Add a solution to a leetcode problem
-- Usage: leetcode add-solution <category> <solution_slug>
--	category: easy, medium, hard
+- Usage: leetcode add-solution <difficulty> <solution_slug>
+-	difficulty: easy, medium, hard
 */
 func addSolution(cmd *cobra.Command, args []string) {
-	// args: category, solution_slug
+	// args: difficulty, solution_slug
 	if len(args) < 2 {
 		log.Fatal("Invalid number of arguments")
 		return
@@ -76,7 +76,7 @@ func addSolution(cmd *cobra.Command, args []string) {
 		mustReplace = flagReplace.Value.String() == "true"
 	}
 
-	category := args[0]
+	difficulty := args[0]
 	solutionSlug := args[1]
 
 	if solutionSlug == "" {
@@ -85,22 +85,22 @@ func addSolution(cmd *cobra.Command, args []string) {
 	}
 
 	// Create the solution file
-	if !slices.Contains(MapSolutionLevel, category) {
-		log.Fatal("Invalid category")
+	if !slices.Contains(MapSolutionLevel, difficulty) {
+		log.Fatal("Invalid difficulty")
 		return
 	}
 
 	// lookup the existing solution filename based on the solution slug
 	// if it exists, return an error
 	if !mustReplace {
-		if _, err := os.Stat(RootPath + "/" + category + "/" + solutionSlug + ".go"); err == nil {
+		if _, err := os.Stat(RootPath + "/" + difficulty + "/" + solutionSlug + ".go"); err == nil {
 			log.Fatal("The solution file already exists")
 			return
 		}
 	}
 
 	// open base stub file
-	fileStub, err := os.Open(RootPath + "/" + category + "/" + "/base.stub")
+	fileStub, err := os.Open(RootPath + "/" + difficulty + "/" + "/base.stub")
 	if err != nil {
 		log.Fatalf("Error opening file solution stub: %v\n", err)
 		return
@@ -117,7 +117,7 @@ func addSolution(cmd *cobra.Command, args []string) {
 	// proccess logic here
 
 	// open the solution file
-	solutionFile, err := os.Create(RootPath + "/" + category + "/" + solutionSlug + ".go")
+	solutionFile, err := os.Create(RootPath + "/" + difficulty + "/" + solutionSlug + ".go")
 	if err != nil {
 		log.Fatalf("Error creating file solution: %v\n", err)
 		return
