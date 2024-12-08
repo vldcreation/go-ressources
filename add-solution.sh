@@ -1,0 +1,1 @@
+go run main.go leetcode add-solution $1 $2 $3
