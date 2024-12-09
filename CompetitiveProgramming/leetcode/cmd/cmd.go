@@ -5,9 +5,9 @@ import (
 	"io"
 	"log"
 	"os"
-	"slices"
 
 	"github.com/spf13/cobra"
+	"github.com/vldcration/go-ressources/util"
 )
 
 const (
@@ -85,7 +85,7 @@ func addSolution(cmd *cobra.Command, args []string) {
 	}
 
 	// Create the solution file
-	if !slices.Contains(MapSolutionLevel, difficulty) {
+	if !util.CheckStringInSlice(difficulty, MapSolutionLevel) {
 		log.Fatal("Invalid difficulty")
 		return
 	}
