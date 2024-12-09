@@ -47,6 +47,8 @@ func NewCMD() *cobra.Command {
 		},
 	}
 	addSolutionCmd.Flags().BoolP("replace", "r", false, "Replace the solution file if it exists")
+	addSolutionCmd.Flags().StringP("difficulty", "d", "", "Difficulty of the problem")
+	addSolutionCmd.Flags().StringP("solution", "s", "", "Solution slug")
 
 	// Add subcommands
 	rootCmd.AddCommand(addSolutionCmd)
@@ -59,25 +61,38 @@ func NewCMD() *cobra.Command {
 -	difficulty: easy, medium, hard
 */
 func addSolution(cmd *cobra.Command, args []string) {
-	// args: difficulty, solution_slug
-	if len(args) < 2 {
-		log.Fatal("Invalid number of arguments")
-		return
-	}
-
 	// register the flag --replace
 	// if the flag is present, the solution file will be replaced
 	// if the flag is not present, the solution file will not be replaced
 	// default: false
-
 	mustReplace := false
 	flagReplace := cmd.Flag("replace")
 	if flagReplace != nil {
 		mustReplace = flagReplace.Value.String() == "true"
 	}
 
-	difficulty := args[0]
-	solutionSlug := args[1]
+	// register --difficulty flag
+	// if the difficulty is not in the list of valid difficulties, return an error
+	// if the solution file already exists, return an error
+	// if the solution file does not exist, create the solution file
+	difficulty := ""
+	if difficulty == "" {
+		difficultyFlag := cmd.Flag("difficulty")
+		if difficultyFlag != nil {
+			difficulty = difficultyFlag.Value.String()
+		}
+	}
+
+	// register the solution slug
+	// if the solution slug is empty, return an error
+	// if the solution slug is not empty, create the solution file
+	solutionSlug := ""
+	if solutionSlug == "" {
+		solutionFlag := cmd.Flag("solution")
+		if solutionFlag != nil {
+			solutionSlug = solutionFlag.Value.String()
+		}
+	}
 
 	if solutionSlug == "" {
 		log.Fatal("Invalid solution slug, it cannot be empty")
