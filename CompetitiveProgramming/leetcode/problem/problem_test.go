@@ -345,3 +345,33 @@ func TestMaxArea(t *testing.T) {
 		}
 	}
 }
+
+func TestIntToRoman(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    int
+		expected string
+	}{
+		{
+			name:     "Test1",
+			input:    3749,
+			expected: "MMMDCCXLIX",
+		},
+		{
+			name:     "Test2",
+			input:    58,
+			expected: "LVIII",
+		},
+		{
+			name:     "Test3",
+			input:    1994,
+			expected: "MCMXCIV",
+		},
+	}
+
+	for _, tt := range tests {
+		if got := medium.IntToRoman(tt.input); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
