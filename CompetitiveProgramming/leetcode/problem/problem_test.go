@@ -315,3 +315,33 @@ func TestMyAtoi(t *testing.T) {
 		}
 	}
 }
+
+func TestMaxArea(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    []int
+		expected int
+	}{
+		{
+			name:     "Test1",
+			input:    []int{1, 8, 6, 2, 5, 4, 8, 3, 7},
+			expected: 49,
+		},
+		{
+			name:     "Test2",
+			input:    []int{1, 1},
+			expected: 1,
+		},
+		{
+			name:     "Test3",
+			input:    []int{1, 1},
+			expected: 1,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := medium.MaxArea(tt.input); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
