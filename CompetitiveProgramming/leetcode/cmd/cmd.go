@@ -93,14 +93,14 @@ func addSolution(cmd *cobra.Command, args []string) {
 	// lookup the existing solution filename based on the solution slug
 	// if it exists, return an error
 	if !mustReplace {
-		if _, err := os.Stat(RootPath + "/" + difficulty + "/" + solutionSlug + ".go"); err == nil {
+		if _, err := os.Stat(RootPath + "/problem" + "/" + difficulty + "/" + solutionSlug + ".go"); err == nil {
 			log.Fatal("The solution file already exists")
 			return
 		}
 	}
 
 	// open base stub file
-	fileStub, err := os.Open(RootPath + "/" + difficulty + "/" + "/base.stub")
+	fileStub, err := os.Open(RootPath + "/problem" + "/" + difficulty + "/base.stub")
 	if err != nil {
 		log.Fatalf("Error opening file solution stub: %v\n", err)
 		return
@@ -117,7 +117,7 @@ func addSolution(cmd *cobra.Command, args []string) {
 	// proccess logic here
 
 	// open the solution file
-	solutionFile, err := os.Create(RootPath + "/" + difficulty + "/" + solutionSlug + ".go")
+	solutionFile, err := os.Create(RootPath + "/problem" + "/" + difficulty + "/" + solutionSlug + ".go")
 	if err != nil {
 		log.Fatalf("Error creating file solution: %v\n", err)
 		return
