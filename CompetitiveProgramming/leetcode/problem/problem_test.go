@@ -370,7 +370,7 @@ func TestIntToRoman(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if got := medium.IntToRoman(tt.input); got != tt.expected {
+		if got := medium.IntToRoman__GPT(tt.input); got != tt.expected {
 			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
 		}
 	}
