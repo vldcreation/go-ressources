@@ -375,3 +375,23 @@ func TestIntToRoman(t *testing.T) {
 		}
 	}
 }
+
+func TestThreeSum(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    []int
+		expected [][]int
+	}{
+		{
+			name:     "Test1",
+			input:    []int{-1, 0, 1, 2, -1, -4},
+			expected: [][]int{{-1, -1, 2}, {-1, 0, 1}},
+		},
+	}
+
+	for _, tt := range tests {
+		if got := medium.ThreeSum(tt.input); !util.Compare2DSliceInt(got, tt.expected) {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
