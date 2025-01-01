@@ -3,6 +3,7 @@ package problem_test
 import (
 	"testing"
 
+	"github.com/vldcration/go-ressources/CompetitiveProgramming/interview"
 	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/problem/medium"
 	"github.com/vldcration/go-ressources/util"
 )
@@ -12,14 +13,14 @@ func TestAddTwoNumbers(t *testing.T) {
 		l1, l2, expected *medium.ListNode
 	}{
 		{
-			l1:       medium.NewListNodeFromSlice([]int{9, 9, 9, 9, 9, 9, 9}),
-			l2:       medium.NewListNodeFromSlice([]int{9, 9, 9, 9}),
-			expected: medium.NewListNodeFromSlice([]int{8, 9, 9, 9, 0, 0, 0, 1}),
-		},
-		{
 			l1:       medium.NewListNodeFromSlice([]int{2, 4, 3}),
 			l2:       medium.NewListNodeFromSlice([]int{5, 6, 4}),
 			expected: medium.NewListNodeFromSlice([]int{7, 0, 8}),
+		},
+		{
+			l1:       medium.NewListNodeFromSlice([]int{9, 9, 9, 9, 9, 9, 9}),
+			l2:       medium.NewListNodeFromSlice([]int{9, 9, 9, 9}),
+			expected: medium.NewListNodeFromSlice([]int{8, 9, 9, 9, 0, 0, 0, 1}),
 		},
 	}
 
@@ -391,6 +392,96 @@ func TestThreeSum(t *testing.T) {
 
 	for _, tt := range tests {
 		if got := medium.ThreeSum(tt.input); !util.Compare2DSliceInt(got, tt.expected) {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
+
+func TestArrayChallanger(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    []int
+		expected string
+	}{
+		{
+			name:     "Test1",
+			input:    []int{1, 42, 42, 180},
+			expected: "42 _27p_2ds_a",
+		},
+		{
+			name:     "Test2",
+			input:    []int{4, 90},
+			expected: "90 _7p3_dsq_",
+		},
+		// {
+		// 	name:     "Test3",
+		// 	input:    []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+		// 	expected: "2 _27p_2ds_a",
+		// },
+	}
+
+	for _, tt := range tests {
+		if got := interview.ArrayChallenge(tt.input); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
+
+func TestSearchChallenge(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    string
+		expected string
+	}{
+		{
+			name:     "Test1",
+			input:    "Hello apple pie",
+			expected: "Hel_o7p_2ds_a",
+		},
+		{
+			name:     "Test2",
+			input:    "No words",
+			expected: "-17_32d_qa",
+		},
+		// {
+		// 	name:     "Test3",
+		// 	input:    []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+		// 	expected: "2 _27p_2ds_a",
+		// },
+	}
+
+	for _, tt := range tests {
+		if got := interview.SearchChallenge(tt.input); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
+
+func TestMathChallenge(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    string
+		expected string
+	}{
+		{
+			name:     "Test1",
+			input:    "6*(4/2)+3*1",
+			expected: "15",
+		},
+		{
+			name:     "Test2",
+			input:    "100*2**4",
+			expected: "1600",
+		},
+		// {
+		// 	name:     "Test3",
+		// 	input:    []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+		// 	expected: "2 _27p_2ds_a",
+		// },
+	}
+
+	for _, tt := range tests {
+		if got := interview.MathChallenge(tt.input); got != tt.expected {
 			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
 		}
 	}
