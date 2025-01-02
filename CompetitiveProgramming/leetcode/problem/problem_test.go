@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/vldcration/go-ressources/CompetitiveProgramming/interview"
+	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/problem/easy"
 	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/problem/medium"
 	"github.com/vldcration/go-ressources/util"
 )
@@ -482,6 +483,36 @@ func TestMathChallenge(t *testing.T) {
 
 	for _, tt := range tests {
 		if got := interview.MathChallenge(tt.input); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
+
+func TestIsPalindromeLinkedList(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    []int
+		expected bool
+	}{
+		{
+			name:     "Test1",
+			input:    []int{2, 4, 6, 4, 2},
+			expected: true,
+		},
+		{
+			name:     "Test2",
+			input:    []int{1, 2, 2, 1},
+			expected: true,
+		},
+		{
+			name:     "Test3",
+			input:    []int{1, 2},
+			expected: false,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.IsPalindromeLinkedList(easy.MakeListFromSlice(tt.input)); got != tt.expected {
 			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
 		}
 	}
