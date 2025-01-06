@@ -8,26 +8,6 @@ package easy
  * }
  */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func MakeListFromSlice(nums []int) *ListNode {
-	if len(nums) == 0 {
-		return nil
-	}
-
-	l := new(ListNode)
-	curr := l
-	for _, n := range nums {
-		curr.Next = &ListNode{Val: n}
-		curr = curr.Next
-	}
-
-	return l.Next
-}
-
 func reverse(head *ListNode) *ListNode {
 	var prev, curr *ListNode
 	curr = head
