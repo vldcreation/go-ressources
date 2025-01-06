@@ -517,3 +517,36 @@ func TestIsPalindromeLinkedList(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeTwoLists(t *testing.T) {
+	tests := []struct {
+		name           string
+		input1, input2 []int
+		expected       []int
+	}{
+		{
+			name:     "Test1",
+			input1:   []int{1, 2, 4},
+			input2:   []int{1, 3, 4},
+			expected: []int{1, 1, 2, 3, 4, 4},
+		},
+		{
+			name:     "Test2",
+			input1:   []int{},
+			input2:   []int{},
+			expected: []int{},
+		},
+		{
+			name:     "Test3",
+			input1:   []int{},
+			input2:   []int{1, 2},
+			expected: []int{1, 2},
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.MergeTwoLists(easy.MakeListFromSlice(tt.input1), easy.MakeListFromSlice(tt.input2)); !util.CompareSliceInt(easy.ExtractListToSlice(got), tt.expected) {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
