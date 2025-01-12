@@ -30,5 +30,5 @@ func FindMaxConsecutiveOnesV2(nums []int) int {
 		}
 	}
 	maxCount = max(maxCount, right-left)
-	return maxCount
+	return max(maxCount, right-left)
 }

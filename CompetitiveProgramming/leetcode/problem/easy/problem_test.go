@@ -6,7 +6,7 @@ import (
 	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/problem/easy"
 )
 
-func Test4Sum(t *testing.T) {
+func TestFindMaxConsecutiveOnesI(t *testing.T) {
 	tests := []struct {
 		name     string
 		nums     []int
@@ -25,7 +25,7 @@ func Test4Sum(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if got := easy.FindMaxConsecutiveOnes(tt.nums); got != tt.expected {
+		if got := easy.FindMaxConsecutiveOnesV3(tt.nums); got != tt.expected {
 			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
 		}
 	}
