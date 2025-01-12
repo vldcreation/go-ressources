@@ -25,7 +25,7 @@ func TestFindMaxConsecutiveOnesI(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if got := easy.FindMaxConsecutiveOnesV3(tt.nums); got != tt.expected {
+		if got := easy.FindMaxConsecutiveOnes(tt.nums); got != tt.expected {
 			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
 		}
 	}
