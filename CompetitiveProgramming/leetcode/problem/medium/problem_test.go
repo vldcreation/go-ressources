@@ -62,3 +62,31 @@ func Test4Sum(t *testing.T) {
 		}
 	}
 }
+
+func TestFindMaxConsecutiveOnesI(t *testing.T) {
+	tests := []struct {
+		name     string
+		nums     []int
+		k        int
+		expected int
+	}{
+		{
+			name:     "Test1",
+			nums:     []int{1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0},
+			k:        2,
+			expected: 6,
+		},
+		{
+			name:     "Test1",
+			nums:     []int{0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1},
+			k:        3,
+			expected: 10,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := medium.FindMaxConsecutiveOnesIII(tt.nums, tt.k); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
