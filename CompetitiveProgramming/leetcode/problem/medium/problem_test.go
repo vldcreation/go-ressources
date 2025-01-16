@@ -90,3 +90,30 @@ func TestFindMaxConsecutiveOnesI(t *testing.T) {
 		}
 	}
 }
+
+func TestXorAllPairingNums(t *testing.T) {
+	tests := []struct {
+		name         string
+		nums1, nums2 []int
+		expected     int
+	}{
+		{
+			name:     "Test1",
+			nums1:    []int{2, 1, 3},
+			nums2:    []int{10, 2, 5, 0},
+			expected: 13,
+		},
+		{
+			name:     "Test1",
+			nums1:    []int{1, 2},
+			nums2:    []int{3, 4},
+			expected: 0,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := medium.XorAllPairingNums(tt.nums1, tt.nums2); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
