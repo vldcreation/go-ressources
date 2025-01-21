@@ -3,16 +3,123 @@ package podify
 import "fmt"
 
 type Bank struct {
-	// properties
+	number string
 }
 
-type TypeBank interface {
-	Type(input string) string // out: type bank name
+type Banker interface {
+	Network(bank Bank) string // out: type bank name
 }
 
-// // Bank{} // mastercard
+var ListBank = []Banker{
+	&AmericanExpress{},
+	&DinersClub{},
+	&Visa{},
+	&MasterCard{},
+	&Discover{},
+	&Maestro{},
+	&Unknown{},
+}
 
-// return mastercard.Type()
+func NewBanker(number string) Banker {
+	bank := Bank{
+		number: number,
+	}
+
+	for _, b := range ListBank {
+		if b.Network(bank) != "unknown" {
+			return b
+		}
+	}
+
+	return &Unknown{}
+}
+
+// American Expres Typer
+type AmericanExpress struct{}
+
+func (a *AmericanExpress) Network(bank Bank) string {
+	if len(bank.number) == 15 {
+		if bank.number[0:2] == "34" || bank.number[0:2] == "37" {
+			return "American Express"
+		}
+	}
+
+	return "unknown"
+}
+
+// Diners Club Typer
+type DinersClub struct{}
+
+func (d *DinersClub) Network(bank Bank) string {
+	if len(bank.number) == 14 {
+		if bank.number[0:2] == "38" || bank.number[0:2] == "39" {
+			return "Diners Club"
+		}
+	}
+
+	return "unknown"
+}
+
+// Visa Typer
+type Visa struct{}
+
+func (v *Visa) Network(bank Bank) string {
+	if len(bank.number) == 13 || len(bank.number) == 16 || len(bank.number) == 19 {
+		if bank.number[0:1] == "4" {
+			return "Visa"
+		}
+	}
+
+	return "unknown"
+}
+
+// MasterCard Typer
+type MasterCard struct{}
+
+func (m *MasterCard) Network(bank Bank) string {
+	if len(bank.number) == 16 {
+		if bank.number[0:2] == "51" || bank.number[0:2] == "52" ||
+			bank.number[0:2] == "53" || bank.number[0:2] == "54" ||
+			bank.number[0:2] == "55" {
+			return "MasterCard"
+		}
+	}
+
+	return "unknown"
+}
+
+// Discover Typer
+type Discover struct{}
+
+func (d *Discover) Network(bank Bank) string {
+	if len(bank.number) == 16 || len(bank.number) == 19 {
+		if isPrefDiscover(bank.number) {
+			return "Discover"
+		}
+	}
+
+	return "unknown"
+}
+
+// Maestro Typer
+type Maestro struct{}
+
+func (m *Maestro) Network(bank Bank) string {
+	if InIntRange(len(bank.number), 12, 19) {
+		if isPrefMaestro(bank.number[0:2]) {
+			return "Maestro"
+		}
+	}
+
+	return "unknown"
+}
+
+// Unknown Typer
+type Unknown struct{}
+
+func (u *Unknown) Network(bank Bank) string {
+	return "unknown"
+}
 
 func In(in string, arr []string) bool {
 	for _, str := range arr {
@@ -64,53 +171,6 @@ func isPrefMaestro(pref string) bool {
 }
 
 func Case1(input string) string {
-	pref := input[0:2]
-	if len(input) == 15 {
-		if string(pref) == "34" || string(pref) == "37" {
-			return "American Express"
-		}
-	} else if len(input) == 14 {
-		if string(pref) == "38" || string(pref) == "39" {
-			return "Diners Club"
-		}
-	} else if len(input) == 16 {
-		// part of visa
-		if string(pref[0]) == "4" {
-			return "Visa"
-		}
-
-		// MC
-		if pref == "51" || pref == "52" || pref == "53" || pref == "54" || pref == "55" {
-			return "MasterCard"
-		}
-
-		// Discover
-		if isPrefDiscover(input) {
-			return "Discover"
-		}
-
-		if isPrefMaestro(pref) {
-			return "Maestro"
-		}
-
-	} else if len(input) == 13 || len(input) == 16 || len(input) == 19 {
-		if string(pref[0]) == "4" {
-			return "Visa"
-		}
-
-		if len(input) == 19 && isPrefDiscover(input) {
-			return "Discover"
-		}
-
-		if len(input) == 19 && isPrefMaestro(pref) {
-			return "Maestro"
-		}
-	} else if InIntRange(len(input), 12, 19) {
-		// Maestro
-		if isPrefMaestro(pref) {
-			return "Maestro"
-		}
-	}
-
-	return "unknown"
+	bank := NewBanker(input)
+	return bank.Network(Bank{number: input})
 }
