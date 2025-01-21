@@ -1,6 +1,9 @@
+// @Author Vicktor Lambok Desrony
 package podify
 
-import "fmt"
+import (
+	"strconv"
+)
 
 type Bank struct {
 	number string
@@ -105,7 +108,7 @@ func (d *Discover) Network(bank Bank) string {
 type Maestro struct{}
 
 func (m *Maestro) Network(bank Bank) string {
-	if InIntRange(len(bank.number), 12, 19) {
+	if len(bank.number) >= 12 && len(bank.number) <= 19 {
 		if isPrefMaestro(bank.number[0:2]) {
 			return "Maestro"
 		}
@@ -131,32 +134,20 @@ func In(in string, arr []string) bool {
 	return false
 }
 
-func InIntRange(in, start, end int) bool {
-	if in >= start && in <= end {
-		return true
-	}
-
-	return false
-}
-
-func genSlice(start, end int) []string {
-	arr := make([]string, 0)
-	for start < end {
-		arr = append(arr, fmt.Sprintf("%d", start))
-		start++
-	}
-
-	return arr
+// Utillity
+func ToInt(in string) int {
+	var out int
+	out, _ = strconv.Atoi(in)
+	return out
 }
 
 func isPrefDiscover(bank string) bool {
-	bankPref := []string{}
-	bankPref = append(bankPref, "6011")
-	bankPref = append(bankPref, genSlice(622126, 622925)...)
-	bankPref = append(bankPref, genSlice(644, 649)...)
-	bankPref = append(bankPref, "65")
 	switch {
-	case string(bank[0:2]) == "65", string(bank[0:4]) == "6011", In(string(bank[0:3]), bankPref), In(string(bank[0:6]), bankPref):
+	case string(bank[0:2]) == "65", string(bank[0:4]) == "6011":
+		return true
+	case ToInt(string(bank[0:6])) >= 622126 && ToInt(string(bank[0:6])) <= 622925:
+		return true
+	case ToInt(string(bank[0:3])) >= 644 && ToInt(string(bank[0:3])) <= 649:
 		return true
 	}
 
@@ -164,10 +155,14 @@ func isPrefDiscover(bank string) bool {
 }
 
 func isPrefMaestro(pref string) bool {
-	bankPref := []string{}
-	bankPref = append(bankPref, "50")
-	bankPref = append(bankPref, genSlice(56, 59)...)
-	return In(pref, bankPref)
+	switch {
+	case pref == "50":
+		return true
+	case ToInt(pref) >= 56 && ToInt(pref) <= 59:
+		return true
+	}
+
+	return false
 }
 
 func Case1(input string) string {
