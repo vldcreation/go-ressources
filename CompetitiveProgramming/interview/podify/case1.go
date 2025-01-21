@@ -124,16 +124,6 @@ func (u *Unknown) Network(bank Bank) string {
 	return "unknown"
 }
 
-func In(in string, arr []string) bool {
-	for _, str := range arr {
-		if str == in {
-			return true
-		}
-	}
-
-	return false
-}
-
 // Utillity
 func ToInt(in string) int {
 	var out int
