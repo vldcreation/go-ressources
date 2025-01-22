@@ -55,3 +55,26 @@ func TestRemoveDuplicatesFromSortedArray(t *testing.T) {
 		}
 	}
 }
+
+func intPtr(v int) *int {
+	return &v
+}
+func TestSumRange(t *testing.T) {
+
+	expected := []*int{nil, intPtr(1), intPtr(-1), intPtr(-3)}
+	numArray := easy.Constructor([]int{-2, 0, 3, -5, 2, -1})
+
+	for i, v := range []struct {
+		left     int
+		right    int
+		expected *int
+	}{
+		{0, 2, expected[1]},
+		{2, 5, expected[2]},
+		{0, 5, expected[3]},
+	} {
+		if got := numArray.SumRange(v.left, v.right); got != *v.expected {
+			t.Errorf("failed on test %d: Expected %v, but got %v", i, *v.expected, got)
+		}
+	}
+}
