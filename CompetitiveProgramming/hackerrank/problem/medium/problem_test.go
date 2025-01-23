@@ -6,7 +6,7 @@ import (
 	"github.com/vldcration/go-ressources/CompetitiveProgramming/hackerrank/problem/medium"
 )
 
-func TestMergeTwoLists(t *testing.T) {
+func TestFormingMagicSquare(t *testing.T) {
 	tests := []struct {
 		name     string
 		nums     [][]int32
