@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/vicktordesrony/Documents/Work/go/src/github.com/go-ressources/CompetitiveProgramming/interview/oy/main",
+      "program": "/Users/vicktordesrony/Documents/Work/go/src/github.com/go-ressources/CompetitiveProgramming/interview/oy/main/build/Debug/outDebug"
+    }
+  ]
+}
