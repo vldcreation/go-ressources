@@ -58,10 +58,3 @@ func TestJavascriptRunner_Run(t *testing.T) {
 		})
 	}
 }
-
-
-out, err := NewInterop(Interop{
-	language: "python",
-	filePath: getAbs("example/example.py"),
-}).Run()
-fmt.Printf("Output: %s", out)
