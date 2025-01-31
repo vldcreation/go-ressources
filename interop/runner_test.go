@@ -13,7 +13,7 @@ func getAbs(path string) string {
 	return abs
 }
 
-func TestJavascriptRunner_Run(t *testing.T) {
+func TestRunner(t *testing.T) {
 	type args struct {
 		interop Interop
 	}
