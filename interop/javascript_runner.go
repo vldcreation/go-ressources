@@ -11,7 +11,7 @@ type JavascriptRunner struct{ I Interop }
 
 func (runner *JavascriptRunner) Run() (string, error) {
 	// Get absolute path
-	absPath, err := filepath.Abs(runner.I.filePath)
+	absPath, err := filepath.Abs(runner.I.FilePath)
 	if err != nil {
 		return "", fmt.Errorf("failed to get absolute path: %v", err)
 	}

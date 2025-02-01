@@ -18,8 +18,8 @@ func TestNewInteropRunner(t *testing.T) {
 			name: "Must JavascriptRunner",
 			args: args{
 				interop: Interop{
-					language: "javascript",
-					filePath: "example.js",
+					Language: "javascript",
+					FilePath: "example.js",
 				},
 			},
 			want: &JavascriptRunner{},
@@ -28,8 +28,8 @@ func TestNewInteropRunner(t *testing.T) {
 			name: "Must PythonRunner",
 			args: args{
 				interop: Interop{
-					language: "python",
-					filePath: "example.py",
+					Language: "python",
+					FilePath: "example.py",
 				},
 			},
 			want: &PythonRunner{},

@@ -27,8 +27,8 @@ func TestRunner(t *testing.T) {
 			name: "Test#JavascriptRunner",
 			args: args{
 				interop: Interop{
-					language: "javascript",
-					filePath: getAbs("example/example.js"),
+					Language: "javascript",
+					FilePath: getAbs("example/example.js"),
 				},
 			},
 			want: "Hello World from Javascript",
@@ -37,8 +37,8 @@ func TestRunner(t *testing.T) {
 			name: "Test#PythonRunner",
 			args: args{
 				interop: Interop{
-					language: "python",
-					filePath: getAbs("example/example.py"),
+					Language: "python",
+					FilePath: getAbs("example/example.py"),
 				},
 			},
 			want: "Hello World from Python",
@@ -47,7 +47,7 @@ func TestRunner(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := NewInteropRunner(tt.args.interop).Run()
-			t.Logf("Success Invoke from %s: %+v\n", tt.args.interop.language, got)
+			t.Logf("Success Invoke from %s: %+v\n", tt.args.interop.Language, got)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Runner.Run() error = %v, wantErr %v", err, tt.wantErr)
 				return

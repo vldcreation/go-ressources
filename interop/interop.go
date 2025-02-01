@@ -2,13 +2,13 @@ package interop
 
 // Interop represents the interoperability interface between Go and other languages
 type Interop struct {
-	language string
-	filePath string
+	Language string
+	FilePath string
 }
 
 // NewInteropRunner creates a new InteropRunner instance
 func NewInteropRunner(interop Interop) InteropRunner {
-	switch interop.language {
+	switch interop.Language {
 	case "javascript", "js":
 		return &JavascriptRunner{I: interop}
 	case "java":
