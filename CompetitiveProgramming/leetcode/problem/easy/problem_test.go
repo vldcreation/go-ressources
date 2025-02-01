@@ -3,7 +3,7 @@ package easy_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/problem/easy"
+	"github.com/vldcreation/go-ressources/CompetitiveProgramming/leetcode/problem/easy"
 )
 
 func TestFindMaxConsecutiveOnesI(t *testing.T) {

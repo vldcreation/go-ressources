@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/vldcration/go-ressources/util"
+	"github.com/vldcreation/go-ressources/util"
 )
 
 func TestRootPath(t *testing.T) {

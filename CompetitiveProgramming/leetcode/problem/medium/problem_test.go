@@ -3,8 +3,8 @@ package medium_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/problem/medium"
-	"github.com/vldcration/go-ressources/util"
+	"github.com/vldcreation/go-ressources/CompetitiveProgramming/leetcode/problem/medium"
+	"github.com/vldcreation/go-ressources/util"
 )
 
 func TestMergeTwoLists(t *testing.T) {

@@ -2,7 +2,7 @@ package swis_map
 
 import (
 	"github.com/dolthub/swiss"
-	"github.com/vldcration/go-ressources/json/json_iter"
+	"github.com/vldcreation/go-ressources/json/json_iter"
 )
 
 func NewMap(data []byte) (*swiss.Map[string, interface{}], error) {

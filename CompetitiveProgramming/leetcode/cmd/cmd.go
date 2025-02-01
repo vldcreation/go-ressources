@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	"github.com/vldcration/go-ressources/util"
+	"github.com/vldcreation/go-ressources/util"
 )
 
 const (

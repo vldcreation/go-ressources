@@ -3,10 +3,10 @@ package problem_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/interview"
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/problem/easy"
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/problem/medium"
-	"github.com/vldcration/go-ressources/util"
+	"github.com/vldcreation/go-ressources/CompetitiveProgramming/interview"
+	"github.com/vldcreation/go-ressources/CompetitiveProgramming/leetcode/problem/easy"
+	"github.com/vldcreation/go-ressources/CompetitiveProgramming/leetcode/problem/medium"
+	"github.com/vldcreation/go-ressources/util"
 )
 
 func TestAddTwoNumbers(t *testing.T) {

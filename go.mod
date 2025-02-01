@@ -1,4 +1,4 @@
-module github.com/vldcration/go-ressources
+module github.com/vldcreation/go-ressources
 
 go 1.22
 

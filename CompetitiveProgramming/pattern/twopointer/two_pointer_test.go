@@ -3,7 +3,7 @@ package twopointer_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/pattern/twopointer"
+	"github.com/vldcreation/go-ressources/CompetitiveProgramming/pattern/twopointer"
 )
 
 func TestCheckIfOneSwapCanMakeEqual(t *testing.T) {

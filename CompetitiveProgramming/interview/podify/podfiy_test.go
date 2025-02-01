@@ -3,7 +3,7 @@ package podify_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/interview/podify"
+	"github.com/vldcreation/go-ressources/CompetitiveProgramming/interview/podify"
 )
 
 func TestCase1(t *testing.T) {

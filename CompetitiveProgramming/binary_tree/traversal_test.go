@@ -3,7 +3,7 @@ package binary_tree
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/util"
+	"github.com/vldcreation/go-ressources/util"
 )
 
 func TestInorderTraversal(t *testing.T) {

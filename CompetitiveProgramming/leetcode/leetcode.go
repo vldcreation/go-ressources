@@ -3,7 +3,7 @@ package leetcode
 import (
 	"log"
 
-	"github.com/vldcration/go-ressources/util"
+	"github.com/vldcreation/go-ressources/util"
 )
 
 /*

@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	linked_list "github.com/vldcration/go-ressources/dataStructure/linkedlist"
+	linked_list "github.com/vldcreation/go-ressources/dataStructure/linkedlist"
 )
 
 // const

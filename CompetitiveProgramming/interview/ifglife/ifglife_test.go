@@ -3,7 +3,7 @@ package ifglife_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/interview/ifglife"
+	"github.com/vldcreation/go-ressources/CompetitiveProgramming/interview/ifglife"
 )
 
 func TestMinimumFlip(t *testing.T) {

@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/vldcration/go-ressources/util"
+	"github.com/vldcreation/go-ressources/util"
 )
 
 type TestSuite struct {

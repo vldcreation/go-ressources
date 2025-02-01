@@ -3,7 +3,7 @@ package leetcode_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode"
+	"github.com/vldcreation/go-ressources/CompetitiveProgramming/leetcode"
 )
 
 func TestMustLoadProblems(t *testing.T) {

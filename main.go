@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/spf13/cobra"
-	leetcode_cmd "github.com/vldcration/go-ressources/CompetitiveProgramming/leetcode/cmd"
+	leetcode_cmd "github.com/vldcreation/go-ressources/CompetitiveProgramming/leetcode/cmd"
 )
 
 func main() {

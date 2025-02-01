@@ -3,7 +3,7 @@ package conditional_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/roadmap/basic/conditional"
+	"github.com/vldcreation/go-ressources/roadmap/basic/conditional"
 )
 
 /*

@@ -3,7 +3,7 @@ package function_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/roadmap/basic/function"
+	"github.com/vldcreation/go-ressources/roadmap/basic/function"
 )
 
 func TestSimpleFunction(t *testing.T) {

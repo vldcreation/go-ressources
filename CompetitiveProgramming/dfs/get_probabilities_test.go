@@ -3,7 +3,7 @@ package dfs
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/util"
+	"github.com/vldcreation/go-ressources/util"
 )
 
 func TestGetAllPossibilities(t *testing.T) {

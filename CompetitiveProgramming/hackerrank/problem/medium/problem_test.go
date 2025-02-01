@@ -3,7 +3,7 @@ package medium_test
 import (
 	"testing"
 
-	"github.com/vldcration/go-ressources/CompetitiveProgramming/hackerrank/problem/medium"
+	"github.com/vldcreation/go-ressources/CompetitiveProgramming/hackerrank/problem/medium"
 )
 
 func TestFormingMagicSquare(t *testing.T) {
