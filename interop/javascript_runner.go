@@ -16,7 +16,7 @@ func (runner *JavascriptRunner) Run() (string, error) {
 		return "", fmt.Errorf("failed to get absolute path: %v", err)
 	}
 
-	cmd := exec.Command("node", absPath)
+	cmd := exec.Command("node", append([]string{absPath}, runner.I.Args...)...)
 
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout

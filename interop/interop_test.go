@@ -22,7 +22,10 @@ func TestNewInteropRunner(t *testing.T) {
 					FilePath: "example.js",
 				},
 			},
-			want: &JavascriptRunner{},
+			want: &JavascriptRunner{Interop{
+				Language: "javascript",
+				FilePath: "example.js",
+			}},
 		},
 		{
 			name: "Must PythonRunner",
@@ -32,7 +35,10 @@ func TestNewInteropRunner(t *testing.T) {
 					FilePath: "example.py",
 				},
 			},
-			want: &PythonRunner{},
+			want: &PythonRunner{Interop{
+				Language: "python",
+				FilePath: "example.py",
+			}},
 		},
 	}
 	for _, tt := range tests {

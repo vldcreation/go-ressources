@@ -16,7 +16,7 @@ func (runner *PythonRunner) Run() (string, error) {
 		return "", fmt.Errorf("failed to get absolute path: %v", err)
 	}
 
-	cmd := exec.Command("python3", absPath)
+	cmd := exec.Command("python3", append([]string{absPath}, runner.I.Args...)...)
 
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout

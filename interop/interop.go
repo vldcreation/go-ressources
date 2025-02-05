@@ -4,6 +4,7 @@ package interop
 type Interop struct {
 	Language string
 	FilePath string
+	Args     []string
 }
 
 // NewInteropRunner creates a new InteropRunner instance
