@@ -117,3 +117,33 @@ func TestXorAllPairingNums(t *testing.T) {
 		}
 	}
 }
+
+func TestLetterCombinations(t *testing.T) {
+	tests := []struct {
+		name     string
+		digits   string
+		expected []string
+	}{
+		{
+			name:     "Test1",
+			digits:   "23",
+			expected: []string{"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"},
+		},
+		{
+			name:     "Test2",
+			digits:   "",
+			expected: []string{},
+		},
+		{
+			name:     "Test3",
+			digits:   "2",
+			expected: []string{"a", "b", "c"},
+		},
+	}
+
+	for _, tt := range tests {
+		if got := medium.LetterCombinations(tt.digits); !util.CompareSliceString(tt.expected, got) {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
