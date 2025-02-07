@@ -4,11 +4,6 @@
 */
 package medium
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	ans := &ListNode{}
 	curr := ans
@@ -39,47 +34,4 @@ func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 
 	return ans.Next
-}
-
-func NewListNode(val int) *ListNode {
-	return &ListNode{Val: val}
-}
-
-func NewListNodeFromSlice(nums []int) *ListNode {
-	l := NewListNode(nums[0])
-	l.LoadFromSlice(nums[1:])
-	return l
-}
-
-func (l *ListNode) Add(val int) {
-	curr := l
-	for curr.Next != nil {
-		curr = curr.Next
-	}
-
-	curr.Next = &ListNode{Val: val}
-}
-
-func (l *ListNode) LoadFromSlice(nums []int) {
-	curr := l
-	for _, n := range nums {
-		curr.Next = &ListNode{Val: n}
-		curr = curr.Next
-	}
-}
-
-func (l *ListNode) Equals(other *ListNode) bool {
-	curr := l
-	otherCurr := other
-
-	for curr != nil && otherCurr != nil {
-		if curr.Val != otherCurr.Val {
-			return false
-		}
-
-		curr = curr.Next
-		otherCurr = otherCurr.Next
-	}
-
-	return curr == nil && otherCurr == nil
 }
