@@ -29,6 +29,33 @@ func ExtractListToSlice(head *ListNode) []int {
 	return nums
 }
 
+func NewListNode(val int) *ListNode {
+	return &ListNode{Val: val}
+}
+
+func NewListNodeFromSlice(nums []int) *ListNode {
+	l := NewListNode(nums[0])
+	l.LoadFromSlice(nums[1:])
+	return l
+}
+
+func (l *ListNode) Add(val int) {
+	curr := l
+	for curr.Next != nil {
+		curr = curr.Next
+	}
+
+	curr.Next = &ListNode{Val: val}
+}
+
+func (l *ListNode) LoadFromSlice(nums []int) {
+	curr := l
+	for _, n := range nums {
+		curr.Next = &ListNode{Val: n}
+		curr = curr.Next
+	}
+}
+
 func (l *ListNode) Equals(other *ListNode) bool {
 	curr := l
 	otherCurr := other

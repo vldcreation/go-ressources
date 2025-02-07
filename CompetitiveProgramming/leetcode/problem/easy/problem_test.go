@@ -87,12 +87,12 @@ func TestHasCycle(t *testing.T) {
 	}{
 		{
 			name:     "Test1",
-			head:     easy.MakeListFromSlice([]int{3, 2, 0, -4}),
+			head:     easy.NewListNodeFromSlice([]int{3, 2, 0, -4}),
 			expected: true,
 		},
 		{
-			name:     "Test1",
-			head:     easy.MakeListFromSlice([]int{1}),
+			name:     "Test2",
+			head:     easy.NewListNodeFromSlice([]int{1}),
 			expected: false,
 		},
 	}
