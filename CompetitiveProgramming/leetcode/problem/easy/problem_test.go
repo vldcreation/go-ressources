@@ -78,3 +78,28 @@ func TestSumRange(t *testing.T) {
 		}
 	}
 }
+
+func TestHasCycle(t *testing.T) {
+	tests := []struct {
+		name     string
+		head     *easy.ListNode
+		expected bool
+	}{
+		{
+			name:     "Test1",
+			head:     easy.MakeListFromSlice([]int{3, 2, 0, -4}),
+			expected: true,
+		},
+		{
+			name:     "Test1",
+			head:     easy.MakeListFromSlice([]int{1}),
+			expected: false,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.HasCycle(tt.head); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
