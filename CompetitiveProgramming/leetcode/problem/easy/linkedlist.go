@@ -28,3 +28,19 @@ func ExtractListToSlice(head *ListNode) []int {
 	}
 	return nums
 }
+
+func (l *ListNode) Equals(other *ListNode) bool {
+	curr := l
+	otherCurr := other
+
+	for curr != nil && otherCurr != nil {
+		if curr.Val != otherCurr.Val {
+			return false
+		}
+
+		curr = curr.Next
+		otherCurr = otherCurr.Next
+	}
+
+	return curr == nil && otherCurr == nil
+}
