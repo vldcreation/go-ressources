@@ -147,3 +147,22 @@ func TestLetterCombinations(t *testing.T) {
 		}
 	}
 }
+
+func TestSumRange2D(t *testing.T) {
+
+	expected := []*int{nil, medium.IntToPtr(8), medium.IntToPtr(11), medium.IntToPtr(12)}
+	numArray := medium.Constructor([][]int{{3, 0, 1, 4, 2}, {5, 6, 3, 2, 1}, {1, 2, 0, 1, 5}, {4, 1, 0, 1, 7}, {1, 0, 3, 0, 5}})
+
+	for i, v := range []struct {
+		row1, col1, row2, col2 int
+		expected               *int
+	}{
+		{2, 1, 4, 3, expected[1]},
+		{1, 1, 2, 2, expected[2]},
+		{1, 2, 2, 4, expected[3]},
+	} {
+		if got := numArray.SumRegion(v.row1, v.col1, v.row2, v.col2); got != *v.expected {
+			t.Errorf("failed on test %d: Expected %v, but got %v", i, *v.expected, got)
+		}
+	}
+}
