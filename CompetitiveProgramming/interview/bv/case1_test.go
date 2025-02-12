@@ -25,10 +25,16 @@ func TestGetMaximumEfficiency(t *testing.T) {
 			numServer: []int32{1, 1, 1},
 			expected:  0,
 		},
+		{
+			name:      "test3",
+			capacity:  []int32{3, 6, 1, 2},
+			numServer: []int32{1, 3},
+			expected:  5,
+		},
 	}
 
 	for _, tt := range tests {
-		if got := bv.GetMaximumEfficiency(tt.capacity, tt.numServer); got != tt.expected {
+		if got := bv.GetMaximumEfficiency2(tt.capacity, tt.numServer); got != tt.expected {
 			t.Errorf("failed (%s) expected: %+v but got: %+v\n", tt.name, tt.expected, got)
 		}
 	}
