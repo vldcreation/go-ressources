@@ -34,7 +34,7 @@ func TestGetMaximumEfficiency(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if got := bv.GetMaximumEfficiency2(tt.capacity, tt.numServer); got != tt.expected {
+		if got := bv.GetMaximumEfficiency(tt.capacity, tt.numServer); got != tt.expected {
 			t.Errorf("failed (%s) expected: %+v but got: %+v\n", tt.name, tt.expected, got)
 		}
 	}
