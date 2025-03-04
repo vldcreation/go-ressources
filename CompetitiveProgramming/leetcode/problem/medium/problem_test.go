@@ -200,3 +200,40 @@ func TestQueryResults(t *testing.T) {
 		}
 	}
 }
+
+func TestMinSubArrayLen(t *testing.T) {
+	tests := []struct {
+		name     string
+		target   int
+		nums     []int
+		expected int
+	}{
+		{
+			name:     "Test1",
+			target:   7,
+			nums:     []int{2, 3, 1, 2, 4, 3},
+			expected: 2,
+		},
+		{
+			name:     "Test2",
+			target:   4,
+			nums:     []int{1, 4, 4},
+			expected: 1,
+		},
+		{
+			name:     "Test3",
+			target:   11,
+			nums:     []int{1, 1, 1, 1, 1, 1, 1, 1},
+			expected: 0,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := medium.MinSubArrayLen(test.target, test.nums)
+			if result != test.expected {
+				t.Errorf("%s - Expected %d, got %d", test.name, test.expected, result)
+			}
+		})
+	}
+}
