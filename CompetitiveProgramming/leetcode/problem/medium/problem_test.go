@@ -237,3 +237,31 @@ func TestMinSubArrayLen(t *testing.T) {
 		})
 	}
 }
+
+func TestProductExceptSelf(t *testing.T) {
+	tests := []struct {
+		name     string
+		nums     []int
+		expected []int
+	}{
+		{
+			name:     "Test1",
+			nums:     []int{1, 2, 3, 4},
+			expected: []int{24, 12, 8, 6},
+		},
+		{
+			name:     "Test2",
+			nums:     []int{-1, 1, 0, -3, 3},
+			expected: []int{0, 0, 9, 0, 0},
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := medium.ProductExceptSelfBest(test.nums)
+			if !util.CompareSliceInt(test.expected, result) {
+				t.Errorf("%s - Expected %v, got %v", test.name, test.expected, result)
+			}
+		})
+	}
+}
