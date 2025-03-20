@@ -53,3 +53,30 @@ func LongestPalindrome(s string) string {
 
 	return ans
 }
+
+func LongestPalindromeBest(s string) string {
+	if len(s) < 2 {
+		return s
+	}
+
+	start, maxLen := 0, 1
+
+	expandAroundCenter := func(left, right int) {
+		for left >= 0 && right < len(s) && s[left] == s[right] {
+			curLen := right - left + 1
+			if curLen > maxLen {
+				start = left
+				maxLen = curLen
+			}
+			left--
+			right++
+		}
+	}
+
+	for i := 0; i < len(s); i++ {
+		expandAroundCenter(i, i)   // Odd length palindromes
+		expandAroundCenter(i, i+1) // Even length palindromes
+	}
+
+	return s[start : start+maxLen]
+}

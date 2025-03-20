@@ -290,7 +290,7 @@ func TestLongestPalindrome(t *testing.T) {
 	}
 
 	for _, tc := range tests {
-		result := medium.LongestPalindrome(tc.str)
+		result := medium.LongestPalindromeBest(tc.str)
 
 		if !util.CheckStringInSlice(result, tc.expected) {
 			t.Errorf("%s failed, Expected one of %v, got %s", tc.name, tc.expected, result)
