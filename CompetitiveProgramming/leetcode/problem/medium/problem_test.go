@@ -297,3 +297,39 @@ func TestLongestPalindrome(t *testing.T) {
 		}
 	}
 }
+
+func TestRemoveNthFromEnd(t *testing.T) {
+	tests := []struct {
+		name     string
+		head     *medium.ListNode
+		n        int
+		expected *medium.ListNode
+	}{
+		{
+			name:     "Test 1",
+			head:     medium.NewListNodeFromSlice([]int{1, 2, 3, 4, 5}),
+			n:        2,
+			expected: medium.NewListNodeFromSlice([]int{1, 2, 3, 5}),
+		},
+		{
+			name:     "Test 2",
+			head:     medium.NewListNodeFromSlice([]int{1}),
+			n:        1,
+			expected: medium.NewListNodeFromSlice(nil),
+		},
+		{
+			name:     "Test 3",
+			head:     medium.NewListNodeFromSlice([]int{1, 2}),
+			n:        1,
+			expected: medium.NewListNodeFromSlice([]int{1}),
+		},
+	}
+
+	for _, tc := range tests {
+		result := medium.RemoveNthFromEnd(tc.head, tc.n)
+
+		if !result.Equals(tc.expected) {
+			t.Errorf("%s failed, Expected %v, got %v", tc.name, tc.expected, result)
+		}
+	}
+}
