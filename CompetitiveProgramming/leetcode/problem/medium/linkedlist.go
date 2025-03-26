@@ -34,7 +34,15 @@ func NewListNode(val int) *ListNode {
 }
 
 func NewListNodeFromSlice(nums []int) *ListNode {
+	if len(nums) == 0 {
+		return nil
+	}
+
 	l := NewListNode(nums[0])
+	if len(nums) == 1 {
+		return l
+	}
+
 	l.LoadFromSlice(nums[1:])
 	return l
 }
