@@ -1,18 +1,18 @@
 package easy
 
 func RemoveDuplicatesFromSortedArray(nums []int) int {
-	mp := make(map[int]int)
+	if len(nums) == 0 {
+		return 0
+	}
 
-	for _, n := range nums {
-		if _, ok := mp[n]; !ok {
-			mp[n]++
+	// Initialize two pointers
+	i := 0
+	for j := 1; j < len(nums); j++ {
+		if nums[i] != nums[j] {
+			i++
+			nums[i] = nums[j]
 		}
 	}
 
-	nums = nums[:0]
-	for _, n := range mp {
-		nums = append(nums, n)
-	}
-
-	return len(mp)
+	return i + 1
 }
