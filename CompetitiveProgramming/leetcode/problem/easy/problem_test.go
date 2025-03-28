@@ -33,25 +33,34 @@ func TestFindMaxConsecutiveOnesI(t *testing.T) {
 
 func TestRemoveDuplicatesFromSortedArray(t *testing.T) {
 	tests := []struct {
-		name     string
-		nums     []int
-		expected int
+		name         string
+		nums         []int
+		expectedNums []int
+		k            int
 	}{
 		{
-			name:     "Test1",
-			nums:     []int{1, 1, 2},
-			expected: 2,
+			name:         "Test1",
+			nums:         []int{1, 1, 2},
+			expectedNums: []int{1, 2},
+			k:            2,
 		},
 		{
-			name:     "Test1",
-			nums:     []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4},
-			expected: 5,
+			name:         "Test1",
+			nums:         []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4},
+			expectedNums: []int{0, 1, 2, 3, 4},
+			k:            5,
 		},
 	}
 
 	for _, tt := range tests {
-		if got := easy.RemoveDuplicatesFromSortedArray(tt.nums); got != tt.expected {
-			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		if got := easy.RemoveDuplicatesFromSortedArray(tt.nums); got != tt.k {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expectedNums, got)
+		}
+
+		for i := 0; i < tt.k; i++ {
+			if tt.nums[i] != tt.expectedNums[i] {
+				t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expectedNums, tt.nums)
+			}
 		}
 	}
 }
