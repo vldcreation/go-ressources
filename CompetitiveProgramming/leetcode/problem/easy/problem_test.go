@@ -112,3 +112,40 @@ func TestHasCycle(t *testing.T) {
 		}
 	}
 }
+
+func TestRemoveElement(t *testing.T) {
+	tests := []struct {
+		name         string
+		nums         []int
+		expectedNums []int
+		val          int
+		k            int
+	}{
+		{
+			name:         "Test1",
+			nums:         []int{3, 2, 2, 3},
+			expectedNums: []int{2, 2},
+			val:          3,
+			k:            2,
+		},
+		{
+			name:         "Test2",
+			nums:         []int{0, 1, 2, 2, 3, 0, 4, 2},
+			expectedNums: []int{0, 1, 4, 0, 3},
+			val:          2,
+			k:            5,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.RemoveElement(tt.nums, tt.val); got != tt.k {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expectedNums, got)
+		}
+
+		for i := 0; i < tt.k; i++ {
+			if tt.nums[i] != tt.expectedNums[i] {
+				t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expectedNums, tt.nums)
+			}
+		}
+	}
+}
