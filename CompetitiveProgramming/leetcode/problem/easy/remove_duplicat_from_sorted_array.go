@@ -10,7 +10,9 @@ func RemoveDuplicatesFromSortedArray(nums []int) int {
 	for j := 1; j < len(nums); j++ {
 		if nums[i] != nums[j] {
 			i++
-			nums[i] = nums[j]
+			if j > i {
+				nums[i] = nums[j]
+			}
 		}
 	}
 
