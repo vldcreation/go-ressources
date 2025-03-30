@@ -333,3 +333,43 @@ func TestRemoveNthFromEnd(t *testing.T) {
 		}
 	}
 }
+
+func TestEqualSubstringWithinBudget(t *testing.T) {
+	tests := []struct {
+		name     string
+		s        string
+		t        string
+		maxCost  int
+		expected int
+	}{
+		{
+			name:     "Test 1",
+			s:        "abcd",
+			t:        "bcdf",
+			maxCost:  3,
+			expected: 3,
+		},
+		{
+			name:     "Test 2",
+			s:        "abcd",
+			t:        "cdef",
+			maxCost:  3,
+			expected: 1,
+		},
+		{
+			name:     "Test 3",
+			s:        "abcd",
+			t:        "acde",
+			maxCost:  0,
+			expected: 1,
+		},
+	}
+
+	for _, tc := range tests {
+		result := medium.EqualSubstring(tc.s, tc.t, tc.maxCost)
+
+		if result != tc.expected {
+			t.Errorf("%s failed, Expected %v, got %v", tc.name, tc.expected, result)
+		}
+	}
+}
