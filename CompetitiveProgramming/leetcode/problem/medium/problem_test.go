@@ -373,3 +373,40 @@ func TestEqualSubstringWithinBudget(t *testing.T) {
 		}
 	}
 }
+
+func TestBalancedStringWithinBudget(t *testing.T) {
+	tests := []struct {
+		name     string
+		s        string
+		expected int
+	}{
+		{
+			name:     "Test 1",
+			s:        "QWER",
+			expected: 0,
+		},
+		{
+			name:     "Test 2",
+			s:        "QQWE",
+			expected: 1,
+		},
+		{
+			name:     "Test 3",
+			s:        "QQQW",
+			expected: 2,
+		},
+		{
+			name:     "Test 4",
+			s:        "WQWRQQQW",
+			expected: 3,
+		},
+	}
+
+	for _, tc := range tests {
+		result := medium.BalancedString(tc.s)
+
+		if result != tc.expected {
+			t.Errorf("%s failed, Expected %v, got %v", tc.name, tc.expected, result)
+		}
+	}
+}
