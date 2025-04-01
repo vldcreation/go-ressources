@@ -17,9 +17,10 @@ func BalancedString(s string) int {
 		count[s[right]]--
 		for left <= right && count['Q'] <= n/4 && count['W'] <= n/4 &&
 			count['E'] <= n/4 && count['R'] <= n/4 {
-			if right-left+1 < ans {
-				ans = right - left + 1
-			}
+			// if right-left+1 < ans {
+			// 	ans = right - left + 1
+			// }
+			ans = min(ans, right-left+1)
 			count[s[left]]++
 			left++
 		}

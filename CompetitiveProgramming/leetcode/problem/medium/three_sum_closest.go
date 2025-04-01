@@ -5,13 +5,6 @@ import (
 	"sort"
 )
 
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-
 func ThreeSumClosest(nums []int, target int) int {
 	ans := math.MaxInt
 	diff := math.MaxInt

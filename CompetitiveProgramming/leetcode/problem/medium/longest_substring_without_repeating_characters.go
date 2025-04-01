@@ -6,9 +6,9 @@ func LengthOfLongestSubstring(s string) int {
 	for i := 0; i < len(s); i++ {
 		if _, ok := bank[rune(s[i])]; ok {
 			if i == len(s)-1 {
-				return maxI(ans, len(bank))
+				return max(ans, len(bank))
 			} else {
-				ans = maxI(ans, len(bank))
+				ans = max(ans, len(bank))
 				i = bank[rune(s[i])] + 1
 				bank = make(map[rune]int)
 				bank[rune(s[i])] = i
@@ -19,7 +19,7 @@ func LengthOfLongestSubstring(s string) int {
 		bank[rune(s[i])] = i
 	}
 
-	return maxI(ans, len(bank))
+	return max(ans, len(bank))
 }
 
 func LengthOfLongestSubstring__GPT(s string) int {
@@ -32,17 +32,9 @@ func LengthOfLongestSubstring__GPT(s string) int {
 		if lastIndex, ok := charIndex[char]; ok && lastIndex >= start {
 			start = lastIndex + 1 // Move the start to one position right of the last occurrence
 		}
-		charIndex[char] = i                    // Update or add the character's index
-		maxLength = maxI(maxLength, i-start+1) // Calculate max length
+		charIndex[char] = i                   // Update or add the character's index
+		maxLength = max(maxLength, i-start+1) // Calculate max length
 	}
 
 	return maxLength
-}
-
-func maxI(a, b int) int {
-	if a > b {
-		return a
-	}
-
-	return b
 }
