@@ -149,3 +149,43 @@ func TestRemoveElement(t *testing.T) {
 		}
 	}
 }
+
+func TestContainsNearbyDuplicate(t *testing.T) {
+	tests := []struct {
+		name     string
+		nums     []int
+		k        int
+		expected bool
+	}{
+		// {
+		// 	name:     "Test1",
+		// 	nums:     []int{1, 2, 3, 1},
+		// 	k:        3,
+		// 	expected: true,
+		// },
+		// {
+		// 	name:     "Test2",
+		// 	nums:     []int{1, 0, 1, 1},
+		// 	k:        1,
+		// 	expected: true,
+		// },
+		// {
+		// 	name:     "Test3",
+		// 	nums:     []int{1, 2, 3, 1, 2, 3},
+		// 	k:        2,
+		// 	expected: false,
+		// },
+		{
+			name:     "Test4",
+			nums:     []int{1, 0, 0, 1, 3, 4, 1},
+			k:        3,
+			expected: true,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.ContainsNearbyDuplicate(tt.nums, tt.k); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
