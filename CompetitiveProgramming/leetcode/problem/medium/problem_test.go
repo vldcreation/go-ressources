@@ -410,3 +410,31 @@ func TestBalancedStringWithinBudget(t *testing.T) {
 		}
 	}
 }
+
+func TestLongestSubstring(t *testing.T) {
+	tests := []struct {
+		name     string
+		s        string
+		k        int
+		expected int
+	}{
+		{
+			name:     "Test1",
+			s:        "aaabb",
+			k:        3,
+			expected: 3,
+		},
+		{
+			name:     "Test2",
+			s:        "ababbc",
+			k:        2,
+			expected: 5,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := medium.LongestSubstring(tt.s, tt.k); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
