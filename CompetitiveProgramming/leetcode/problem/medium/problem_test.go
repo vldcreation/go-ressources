@@ -477,33 +477,26 @@ func TestLongestSubarray(t *testing.T) {
 func TestFindAnagrams(t *testing.T) {
 	tests := []struct {
 		name     string
-		nums     []int
-		expected int
+		s        string
+		p        string
+		expected []int
 	}{
 		{
 			name:     "Test1",
-			nums:     []int{1, 1, 0, 1},
-			expected: 3,
+			s:        "cbaebabacd",
+			p:        "abc",
+			expected: []int{0, 6},
 		},
 		{
 			name:     "Test2",
-			nums:     []int{0, 1, 1, 1, 0, 1, 1, 0, 1},
-			expected: 5,
-		},
-		{
-			name:     "Test3",
-			nums:     []int{1, 1, 1},
-			expected: 2,
-		},
-		{
-			name:     "Test4",
-			nums:     []int{1, 1, 0, 0, 1, 1, 1, 0, 1},
-			expected: 4,
+			s:        "abab",
+			p:        "ab",
+			expected: []int{0, 1, 2},
 		},
 	}
 
 	for _, tt := range tests {
-		if got := medium.LongestSubarray(tt.nums); got != tt.expected {
+		if got := medium.FindAnagrams(tt.s, tt.p); !util.CompareSliceInt(tt.expected, got) {
 			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
 		}
 	}
