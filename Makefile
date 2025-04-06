@@ -13,26 +13,43 @@ AddSolution:
 .PHONY: easy
 
 easy:
+	n=
 	N=
-	@if [ -z "$(N)" ]; then \
-		echo "$(RED)N must be not empty$(NC)"; \
+	@if [ -z "$(n)" ] && [ -z "$(N)" ]; then \
+		echo "$(RED)Either n or N must be not empty$(NC)"; \
 		exit 1; \
 	fi
 	@echo "Generating easy solution"
-	@leetscrape -n $(N) sol -t easy -l go -o CompetitiveProgramming/leetcode/problem
+	@if [ ! -z "$(n)" ]; then \
+		leetscrape -n $(n) sol -t easy -l go -o CompetitiveProgramming/leetcode/problem; \
+	elif [ ! -z "$(N)" ]; then \
+		leetscrape -N $(N) sol -t easy -l go -o CompetitiveProgramming/leetcode/problem; \
+	fi
+
 medium:
+	n=
 	N=
-	@if [ -z "$(N)" ]; then \
-		echo "$(RED)N must be not empty$(NC)"; \
+	@if [ -z "$(n)" ] && [ -z "$(N)" ]; then \
+		echo "$(RED)Either n or N must be not empty$(NC)"; \
 		exit 1; \
 	fi
 	@echo "Generating medium solution"
-	@leetscrape -n $(N) sol -t medium -l go -o CompetitiveProgramming/leetcode/problem
+	@if [ ! -z "$(n)" ]; then \
+		leetscrape -n $(n) sol -t medium -l go -o CompetitiveProgramming/leetcode/problem; \
+	elif [ ! -z "$(N)" ]; then \
+		leetscrape -N $(N) sol -t medium -l go -o CompetitiveProgramming/leetcode/problem; \
+	fi
+
 hard:
+	n=
 	N=
-	@if [ -z "$(N)" ]; then \
-		echo "$(RED)N must be not empty$(NC)"; \
+	@if [ -z "$(n)" ] && [ -z "$(N)" ]; then \
+		echo "$(RED)Either n or N must be not empty$(NC)"; \
 		exit 1; \
 	fi
 	@echo "Generating hard solution"
-	@leetscrape -n $(N) sol -t hard -l go -o CompetitiveProgramming/leetcode/problem
+	@if [ ! -z "$(n)" ]; then \
+		leetscrape -n $(n) sol -t hard -l go -o CompetitiveProgramming/leetcode/problem; \
+	elif [ ! -z "$(N)" ]; then \
+		leetscrape -N $(N) sol -t hard -l go -o CompetitiveProgramming/leetcode/problem; \
+	fi
