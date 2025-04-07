@@ -501,3 +501,37 @@ func TestFindAnagrams(t *testing.T) {
 		}
 	}
 }
+
+func TestCharacterReplacement(t *testing.T) {
+	tests := []struct {
+		name     string
+		s        string
+		k        int
+		expected int
+	}{
+		{
+			name:     "Test1",
+			s:        "ABAB",
+			k:        2,
+			expected: 4,
+		},
+		{
+			name:     "Test2",
+			s:        "AABABBA",
+			k:        1,
+			expected: 4,
+		},
+		{
+			name:     "Test3",
+			s:        "ABBB",
+			k:        2,
+			expected: 4,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := medium.CharacterReplacement(tt.s, tt.k); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
