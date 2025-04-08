@@ -535,3 +535,28 @@ func TestCharacterReplacement(t *testing.T) {
 		}
 	}
 }
+
+func TestNumberOfArithmeticSlices(t *testing.T) {
+	tests := []struct {
+		name     string
+		nums     []int
+		expected int
+	}{
+		{
+			name:     "Test1",
+			nums:     []int{1, 2, 3, 4},
+			expected: 3,
+		},
+		{
+			name:     "Test2",
+			nums:     []int{1},
+			expected: 0,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := medium.NumberOfArithmeticSlices(tt.nums); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
