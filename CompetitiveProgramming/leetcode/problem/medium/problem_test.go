@@ -560,3 +560,34 @@ func TestNumberOfArithmeticSlices(t *testing.T) {
 		}
 	}
 }
+
+func TestFindClosestElements(t *testing.T) {
+	tests := []struct {
+		name     string
+		arr      []int
+		k        int
+		x        int
+		expected []int
+	}{
+		{
+			name:     "Test1",
+			arr:      []int{1, 2, 3, 4, 5},
+			k:        4,
+			x:        3,
+			expected: []int{1, 2, 3, 4},
+		},
+		{
+			name:     "Test2",
+			arr:      []int{1, 1, 2, 3, 4, 5},
+			k:        4,
+			x:        -1,
+			expected: []int{1, 1, 2, 3},
+		},
+	}
+
+	for _, tt := range tests {
+		if got := medium.FindClosestElements(tt.arr, tt.k, tt.x); !util.CompareSliceInt(tt.expected, got) {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
