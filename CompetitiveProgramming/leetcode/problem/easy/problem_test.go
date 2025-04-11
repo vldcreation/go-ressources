@@ -189,3 +189,31 @@ func TestContainsNearbyDuplicate(t *testing.T) {
 		}
 	}
 }
+
+func TestFindMaxAverage(t *testing.T) {
+	tests := []struct {
+		name     string
+		nums     []int
+		k        int
+		expected float64
+	}{
+		{
+			name:     "Test1",
+			nums:     []int{1, 12, -5, -6, 50, 3},
+			k:        4,
+			expected: 12.75,
+		},
+		{
+			name:     "Test2",
+			nums:     []int{5},
+			k:        1,
+			expected: 5.0,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.FindMaxAverage(tt.nums, tt.k); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
