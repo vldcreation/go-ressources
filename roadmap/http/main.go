@@ -271,6 +271,7 @@ func mockServerHandler(w http.ResponseWriter, r *http.Request) {
 			log.Printf("[MockServer] /retry-once: Sending 200 (attempt %d)", count)
 			w.WriteHeader(http.StatusOK)
 			fmt.Fprintln(w, "Service is back online!")
+			requestCountRetryable = 0 // Reset counter
 		}
 	case "/fail-always": // Always fails with 500
 		w.WriteHeader(http.StatusInternalServerError)
@@ -316,7 +317,7 @@ func mockServerHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// Seed random number generator for jitter
-	rand.Seed(time.Now().UnixNano())
+	rand.New(rand.NewSource(time.Now().UnixNano()))
 	log.SetOutput(os.Stdout) // Ensure logs go to stdout
 
 	// Start the mock server
