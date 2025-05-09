@@ -4,8 +4,10 @@ go 1.22
 
 require (
 	github.com/dolthub/swiss v0.2.1
+	github.com/google/uuid v1.4.0
 	github.com/json-iterator/go v1.1.12
 	github.com/leekchan/accounting v0.3.1
+	github.com/lib/pq v1.0.0
 	github.com/shopspring/decimal v1.4.0
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/viper v1.19.0
