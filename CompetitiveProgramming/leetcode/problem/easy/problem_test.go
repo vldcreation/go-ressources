@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/vldcreation/go-ressources/CompetitiveProgramming/leetcode/problem/easy"
+	"github.com/vldcreation/go-ressources/util"
 )
 
 func TestFindMaxConsecutiveOnesI(t *testing.T) {
@@ -243,6 +244,40 @@ func TestFindLHS(t *testing.T) {
 
 	for _, tt := range tests {
 		if got := easy.FindLHS(tt.nums); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
+
+func TestDecrypt(t *testing.T) {
+	tests := []struct {
+		name     string
+		code     []int
+		k        int
+		expected []int
+	}{
+		// {
+		// 	name:     "Test1",
+		// 	code:     []int{5, 7, 1, 4},
+		// 	k:        3,
+		// 	expected: []int{12, 10, 16, 13},
+		// },
+		// {
+		// 	name:     "Test2",
+		// 	code:     []int{1, 2, 3, 4},
+		// 	k:        0,
+		// 	expected: []int{0, 0, 0, 0},
+		// },
+		{
+			name:     "Test3",
+			code:     []int{2, 4, 9, 3},
+			k:        -2,
+			expected: []int{12, 5, 6, 13},
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.Decrypt(tt.code, tt.k); !util.CompareSliceInt(got, tt.expected) {
 			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
 		}
 	}
