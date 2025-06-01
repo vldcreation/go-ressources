@@ -336,3 +336,31 @@ func TestCountGoodSubstrings(t *testing.T) {
 		}
 	}
 }
+
+func TestMinimumDifference(t *testing.T) {
+	tests := []struct {
+		name     string
+		nums     []int
+		k        int
+		expected int
+	}{
+		{
+			name:     "Test1",
+			nums:     []int{90},
+			k:        1,
+			expected: 0,
+		},
+		{
+			name:     "Test2",
+			nums:     []int{9, 4, 1, 7},
+			k:        2,
+			expected: 2,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.MinimumDifference(tt.nums, tt.k); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
