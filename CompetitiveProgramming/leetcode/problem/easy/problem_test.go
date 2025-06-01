@@ -282,3 +282,32 @@ func TestDecrypt(t *testing.T) {
 		}
 	}
 }
+
+func TestLongestNiceSubstring(t *testing.T) {
+	tests := []struct {
+		name     string
+		s        string
+		expected string
+	}{
+		{
+			name:     "Test1",
+			s:        "YazaAay",
+			expected: "aAa",
+		},
+		{
+			name:     "Test2",
+			s:        "Bb",
+			expected: "Bb",
+		},
+		{
+			name:     "Test3",
+			s:        "c",
+			expected: "",
+		},
+	}
+	for _, tt := range tests {
+		if got := easy.LongestNiceSubstring(tt.s); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
