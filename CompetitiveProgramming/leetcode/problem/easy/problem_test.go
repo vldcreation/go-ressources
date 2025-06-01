@@ -311,3 +311,28 @@ func TestLongestNiceSubstring(t *testing.T) {
 		}
 	}
 }
+
+func TestCountGoodSubstrings(t *testing.T) {
+	tests := []struct {
+		name     string
+		s        string
+		expected int
+	}{
+		{
+			name:     "Test1",
+			s:        "xyzzaz",
+			expected: 1,
+		},
+		{
+			name:     "Test2",
+			s:        "aababcabc",
+			expected: 4,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.CountGoodSubstrings(tt.s); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
