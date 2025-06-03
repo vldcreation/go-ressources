@@ -364,3 +364,31 @@ func TestMinimumDifference(t *testing.T) {
 		}
 	}
 }
+
+func TestMinimumRecolors(t *testing.T) {
+	tests := []struct {
+		name     string
+		blocks   string
+		k        int
+		expected int
+	}{
+		{
+			name:     "Test1",
+			blocks:   "WBBWWBB",
+			k:        7,
+			expected: 3,
+		},
+		{
+			name:     "Test2",
+			blocks:   "WBWBBBW",
+			k:        2,
+			expected: 0,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.MinimumRecolors(tt.blocks, tt.k); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
