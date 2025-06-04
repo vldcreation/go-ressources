@@ -392,3 +392,37 @@ func TestMinimumRecolors(t *testing.T) {
 		}
 	}
 }
+
+func TestLongestAlternatingSubarray(t *testing.T) {
+	tests := []struct {
+		name      string
+		nums      []int
+		threshold int
+		expected  int
+	}{
+		{
+			name:      "Test1",
+			nums:      []int{3, 2, 5, 4},
+			threshold: 5,
+			expected:  3,
+		},
+		{
+			name:      "Test2",
+			nums:      []int{1, 2},
+			threshold: 2,
+			expected:  1,
+		},
+		{
+			name:      "Test3",
+			nums:      []int{2, 3, 4, 5},
+			threshold: 4,
+			expected:  3,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.LongestAlternatingSubarray(tt.nums, tt.threshold); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
