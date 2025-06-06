@@ -426,3 +426,33 @@ func TestLongestAlternatingSubarray(t *testing.T) {
 		}
 	}
 }
+
+func TestMaximumStrongPairXor(t *testing.T) {
+	tests := []struct {
+		name     string
+		nums     []int
+		expected int
+	}{
+		{
+			name:     "Test1",
+			nums:     []int{1, 2, 3, 4, 5},
+			expected: 7,
+		},
+		{
+			name:     "Test2",
+			nums:     []int{10, 100},
+			expected: 0,
+		},
+		{
+			name:     "Test3",
+			nums:     []int{5, 6, 25, 30},
+			expected: 7,
+		},
+	}
+
+	for _, tt := range tests {
+		if got := easy.MaximumStrongPairXor(tt.nums); got != tt.expected {
+			t.Errorf("failed on test (%s): Expected %v, but got %v", tt.name, tt.expected, got)
+		}
+	}
+}
